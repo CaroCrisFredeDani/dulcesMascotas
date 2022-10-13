@@ -14,7 +14,7 @@ const Gatos = sequelize.define('gatos', {
     type: DataTypes.STRING
   },
   edad: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   talla: {
     type: DataTypes.STRING

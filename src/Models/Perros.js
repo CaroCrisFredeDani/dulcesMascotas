@@ -14,7 +14,7 @@ const Perros = sequelize.define('perros', {
     type: DataTypes.STRING
   },
   edad: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   talla: {
     type: DataTypes.STRING
