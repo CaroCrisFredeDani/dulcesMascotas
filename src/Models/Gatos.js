@@ -4,18 +4,22 @@ import { sequelize } from '../Database/Database.js';
 const Gatos = sequelize.define('gatos', {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
+  },
+  foto:{
+    type: DataTypes.STRING
   },
   nombre: {
     type: DataTypes.STRING
   },
-  raza: {
+  edad: {
+    type: DataTypes.INTEGER,
+  },
+  talla: {
     type: DataTypes.STRING
   },
   descripcion: {
-    type: DataTypes.STRING
-  },
-  detalles: {
     type: DataTypes.STRING
   }
 });

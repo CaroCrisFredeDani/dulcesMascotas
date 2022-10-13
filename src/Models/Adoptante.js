@@ -4,7 +4,8 @@ import { sequelize } from '../Database/Database.js';
 const Adoptante = sequelize.define('adoptante', {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   nombre: {
     type: DataTypes.STRING

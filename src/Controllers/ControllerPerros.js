@@ -11,13 +11,14 @@ const getPerros = async (req, res) => {
 
 const postPerros = async (req, res) => {
   try {
-    const { id, nombre, raza, descripcion, detalles } = req.body;
+    const { id, foto, nombre, edad, talla, descripcion } = req.body;
     const newPerro = await Perros.create({
       id,
+      foto,
       nombre,
-      raza,
-      descripcion,
-      detalles
+      edad,
+      talla,
+      descripcion
     });
     res.status(200).json(newPerro);
   } catch (error) {
@@ -28,16 +29,18 @@ const postPerros = async (req, res) => {
 const putPerros = async (req, res) => {
   try {
     const { id } = req.params;
+    const { foto } = req.body
     const { nombre } = req.body;
-    const { raza } = req.body;
+    const { edad } = req.body;
+    const { talla } = req.body;
     const { descripcion } = req.body;
-    const { detalles } = req.body;
 
     const oldPerro = await Perros.findByPk(id);
+    oldPerro.foto = foto;
     oldPerro.nombre = nombre;
-    oldPerro.raza = raza;
+    oldPerro.edad = edad;
+    oldPerro.talla = talla;
     oldPerro.descripcion = descripcion;
-    oldPerro.detalles = detalles;
     const modPerro = await oldPerro.save();
 
     res.status(200).json(modPerro);

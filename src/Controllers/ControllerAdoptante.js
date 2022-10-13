@@ -38,6 +38,8 @@ const putAdoptante = async (req, res) => {
 
     const oldAdoptante = await Adoptante.findByPk(id);
     oldAdoptante.nombre=nombre;
+    oldAdoptante.correo=correo;
+    oldAdoptante.telefono=telefono;
     const modAdoptante = await oldAdoptante.save();
 
     res.status(200).json(modAdoptante);

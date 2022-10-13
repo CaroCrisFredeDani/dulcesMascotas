@@ -11,13 +11,14 @@ const getGatos = async (req, res) => {
 
 const postGatos = async (req, res) => {
   try {
-    const { id, nombre, raza, descripcion, detalles } = req.body;
+    const { id, foto, nombre, edad, talla, descripcion } = req.body;
     const newGato = await Gatos.create({
       id,
+      foto,
       nombre,
-      raza,
-      descripcion,
-      detalles
+      edad,
+      talla,
+      descripcion
     });
     res.status(200).json(newGato);
   } catch (error) {
@@ -28,16 +29,19 @@ const postGatos = async (req, res) => {
 const putGatos = async (req, res) => {
   try {
     const { id } = req.params;
+    const { foto } = req.body;
     const { nombre } = req.body;
-    const { raza } = req.body;
+    const { edad } = req.body;
+    const { talla} = req.body;
     const { descripcion } = req.body;
-    const { detalles } = req.body;
 
     const oldGatos = await Gatos.findByPk(id);
+    oldGatos.foto = foto;
     oldGatos.nombre = nombre;
-    oldGatos.raza = raza;
+    oldGatos.edad = edad;
+    oldGatos.talla = talla;
     oldGatos.descripcion = descripcion;
-    oldGatos.detalles = detalles;
+
     const modGato = await oldGatos.save();
 
     res.status(200).json(modGato);

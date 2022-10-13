@@ -9,7 +9,7 @@ import './src/Models/Perros.js';
 
 const testDb = async () => {
   try {
-    await sequelize.authenticate();
+    await sequelize.sync();
     console.log('Connection has been established successfully.');
     app.use(cors());
     app.use(express.json({ extended: false }));
